@@ -62,3 +62,7 @@ p {
 img {
   border-radius: .5em;
 }
+.row {
+  display: grid;
+  
+}
