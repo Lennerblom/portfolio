@@ -16,7 +16,7 @@ export default class About extends Component {
             </nav>
             <p>this is the about page</p>
             <Button variant="contained" color="primary">
-      Hello World
+      Material UI button
     </Button>
           </Fragment>
         )
