@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles/practice.css';
+import './styles/practice.scss';
 
 export default class CssPractice extends Component {
     render() {
