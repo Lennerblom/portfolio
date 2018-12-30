@@ -4,6 +4,7 @@ import './App.css';
 import Home from './home';
 import About from './about';
 import CssPractice from './css-practice';
+// import ResumeInMD from './resume.md';
 class App extends Component {
   render() {
     return (
@@ -12,6 +13,7 @@ class App extends Component {
                   <Fragment>
                     <Route exact path={`/`} component={Home}/>
                     <Route exact path={'/about'} component={About}/>
+                    {/* <Route exact path={'/resume'} component={ResumeInMD}/> */}
                     <Route exact path={'/css-practice'} component={CssPractice}/>
                   </Fragment>
               </BrowserRouter>
