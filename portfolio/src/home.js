@@ -1,5 +1,6 @@
 import React, { Component, Fragment }  from 'react';
 import './styles/practice.scss';
+import Rotator from './rotator';
 export default class Home extends Component {
     render(){
         return(
@@ -13,7 +14,8 @@ export default class Home extends Component {
           </nav>
                 <img src={require('./assets/MyFace.jpg') } alt="my face" width="300px"/>
                 <div class="container projects">
-                  <div class="row">
+                <Rotator/>
+                  {/* <div class="row">
                     <div class="column1">
                       <a href="https://tier-board.github.io/tier-board-client/">
                         <img src={require('./assets/tier-board.png')} alt="link to tier-board site" width="150px"/>
@@ -29,7 +31,7 @@ export default class Home extends Component {
                         <img src={require('./assets/calculator.png')} alt="link to my calculator" width="150px"/> 
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
             </Fragment>
         )
