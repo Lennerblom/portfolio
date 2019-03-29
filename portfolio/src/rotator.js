@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-
+import {Link} from 'react-router-dom';
+const anchorRef = React.createRef()
 class Node {
     constructor(url, image) {
-      this.value = {url,image};
+      this.value = url;
+      this.image = image;
       this.next = null;
       this.previous = null;
     }
@@ -15,58 +17,66 @@ class LinkedList {
       this.next = null;
     }
     
-    append(val){
-      let node = new Node(val);
+    append(val,img){
+      let node = new Node(val,img);
       if(this.head === null) {
-        this.head = new Node(val);
+        this.head = new Node(val,img);
       } else {
         node = this.head;
         while (node.next) {
           node = node.next;
         }
-        node.next = new Node(val);
+        node.next = new Node(val,img);
       }
       return node.next;
     }
 }
 let tierUrl = "https://tier-board.github.io/tier-board-client/";
-let tierImage = "https://tier-board.github.io/tier-board-client/";
+let tierImage = "tier-board.png";
 let masterMindUrl = "https://lennerblom.github/master-mind/#/";
 let bitUrl = "https://bitfellows.github.io/client-side/";
-let bitImage = './assets/bitfellows.png';
+let bitImage = 'bitfellows.png';
 let calcUrl = "https://lennerblom.github.io/calculator/";
-let calcImage = './assets/calculator.png';
+let calcImage = 'calculator.png';
 
 let list = new LinkedList();
 list.append(tierUrl, tierImage);
 list.append(bitUrl, bitImage);
 list.append(calcUrl, calcImage);
 list.append(masterMindUrl);
-
-let currentImage;
+let count = 0;
+let currentImage = 'MyFace.jpg';
+anchorRef(list.head.value);
 export default class Rotator extends Component {
 
-        // Constructor(props){
-        //     super(props);
-        //     this.state = {
-        //         view: true,
-        //     }
-        // };
+        constructor(props){
+            super(props);
+            this.state = {
+                view: true,
+            }
+        };
 
         rotate = () => {
            list.head = list.head.next;
-           currentImage = list.head.value.image;
-           return list.head.value;
+           //currentImage = list.head.image;
+           console.log(currentImage, list.head.value, list.head.image);
+           //return list.head.value;
+           count++;
+           console.log('count: ',count);
+           this.setState({view: false});   
         }
+
+
         render() {
         return (
             <div>
                 <h2>Rotator</h2>
-                <div class="rotator">
-                      <a href={list.head.value.url}>{currentImage}
-                        {/* <img src={require({currentImage})} alt="link to site" width="150px"/> */}
-                      </a>
+                <div className="rotator">
+                <Link to="/" innerRef={anchorRef}>
+                        <img src={require(`./assets/${list.head.image}`)} alt="link to site" width="150px"/>
+                      </Link>
                 </div>
+                
                 <button onClick={this.rotate}>Next</button>
             </div>
         );

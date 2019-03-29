@@ -13,7 +13,7 @@ export default class Home extends Component {
             </ul>
           </nav>
                 <img src={require('./assets/MyFace.jpg') } alt="my face" width="300px"/>
-                <div class="container projects">
+                <div className="container projects">
                 <Rotator/>
                   {/* <div class="row">
                     <div class="column1">
