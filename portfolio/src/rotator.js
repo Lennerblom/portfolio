@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-const anchorRef = React.createRef()
+//import {Link} from 'react-router-dom';
+// const anchorRef = React.createRef()
 class Node {
     constructor(url, image) {
       this.value = url;
@@ -33,7 +33,8 @@ class LinkedList {
 }
 let tierUrl = "https://tier-board.github.io/tier-board-client/";
 let tierImage = "tier-board.png";
-let masterMindUrl = "https://lennerblom.github/master-mind/#/";
+let masterMindUrl = "https://lennerblom.github.io/master-mind/#/";
+let masterImage = 'mastermind.png';
 let bitUrl = "https://bitfellows.github.io/client-side/";
 let bitImage = 'bitfellows.png';
 let calcUrl = "https://lennerblom.github.io/calculator/";
@@ -41,12 +42,14 @@ let calcImage = 'calculator.png';
 
 let list = new LinkedList();
 list.append(tierUrl, tierImage);
+list.append(masterMindUrl, masterImage);
 list.append(bitUrl, bitImage);
 list.append(calcUrl, calcImage);
-list.append(masterMindUrl);
+
 let count = 0;
 let currentImage = 'MyFace.jpg';
-anchorRef(list.head.value);
+let url = 'https://tier-board.github.io/tier-board-client/';
+
 export default class Rotator extends Component {
 
         constructor(props){
@@ -60,7 +63,7 @@ export default class Rotator extends Component {
            list.head = list.head.next;
            //currentImage = list.head.image;
            console.log(currentImage, list.head.value, list.head.image);
-           //return list.head.value;
+           url = list.head.value;
            count++;
            console.log('count: ',count);
            this.setState({view: false});   
@@ -72,9 +75,9 @@ export default class Rotator extends Component {
             <div>
                 <h2>Rotator</h2>
                 <div className="rotator">
-                <Link to="/" innerRef={anchorRef}>
+                <a href={url}>
                         <img src={require(`./assets/${list.head.image}`)} alt="link to site" width="150px"/>
-                      </Link>
+                      </a>
                 </div>
                 
                 <button onClick={this.rotate}>Next</button>
