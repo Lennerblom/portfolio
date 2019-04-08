@@ -23,6 +23,13 @@ const Arrow = styled.div`
   user-select: none;
   ${props => props.right ? css`left: 90%;` : css`left: 0%;`}
 `;
+let StyledImage = styled.img`
+  margin: 0 .5em 0 .5em auto;
+  max-width: 90%;
+  -webkit-transition: opacity 1s; /* For Safari 3.1 to 6.0 */
+  transition: opacity 1s;
+  `;
+
 const CarouselUI = ({ position, handleClick, children }) => (
   <Container>
       {children}
@@ -91,18 +98,35 @@ export default class Rotator extends Component {
         };
 
         rotate = () => {
-           // if(list.next){
+            // if(!list.next){
+            //   list.head = list.previous.previous.previous;
+            // } 
+            let move = () => {
+              StyledImage = styled.img`
+              transition: opacity 1s;
+              opacity: 0.1;             
+              `;
+              this.setState({view: false});
+            }
+           setTimeout(move,0); 
+
+           let change = () => {
+            StyledImage = styled.img`
+            transition: opacity 1s;
+            opacity: 1;
+            `;
            list.head = list.head.next;
            //currentImage = list.head.image;
            console.log(currentImage, list.head.value, list.head.image);
            url = list.head.value;
            count++;
            console.log('count: ',count);
-           this.setState({view: false}); 
-            //}
-            // if(!list.next){
-            //     list.head = list.previous.previous.previous;
-            // }  
+            
+
+              this.setState({view: true});
+           }
+           setTimeout(change,1000);
+
         }
 
 
@@ -110,15 +134,15 @@ export default class Rotator extends Component {
         return (
             <div>
                 <h2>Projects</h2>
-                <Carousel /*defaultWait={1000} wait for 1000 milliseconds */>
-                  <Slide right>
+                {/* <Carousel /*defaultWait={1000} wait for 1000 milliseconds >
+                  <Slide right> */}
                     <div className="rotator">
                       <a href={url}>
-                        <img src={require(`./assets/${list.head.image}`)} alt="link to site" width="150px"/>
+                        <StyledImage src={require(`./assets/${list.head.image}`)} alt="link to site" width="200px"/>
                       </a>
                     </div>
-                  </Slide>
-                </Carousel>
+                  {/* </Slide>
+                </Carousel> */}
                 
                 <button onClick={this.rotate}>Next</button>
             </div>
