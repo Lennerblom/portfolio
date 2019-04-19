@@ -4,6 +4,7 @@ class Node {
     this.value = val;
     this.next = null;
     this.previous = null;
+    this.image = '';
   }
 }
 
@@ -93,4 +94,4 @@ class LinkedList {
   // }
 }
 
-module.exports = LinkedList;
+export default LinkedList;

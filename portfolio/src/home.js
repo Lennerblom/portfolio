@@ -1,6 +1,8 @@
 import React, { Component, Fragment }  from 'react';
 import './styles/practice.scss';
 import Rotator from './rotator';
+import ProjectCard from './projectCard';
+
 export default class Home extends Component {
     render(){
         return(
@@ -14,7 +16,7 @@ export default class Home extends Component {
           </nav>
                 <img src={require('./assets/MyFace.jpg') } alt="my face" width="300px"/>
                 <div className="container projects">
-                <Rotator/>
+                <ProjectCard/>
                   {/* <div class="row">
                     <div class="column1">
                       <a href="https://tier-board.github.io/tier-board-client/">
