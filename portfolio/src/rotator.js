@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import makeCarousel from 'react-reveal/makeCarousel';
 import Slide from 'react-reveal/Slide';
 import styled, { css } from 'styled-components';
+// import LinkedList from './link_list';
+
 
 const Container = styled.div`
   border: 1px solid red;
@@ -57,16 +59,36 @@ class LinkedList {
     
     append(val,img){
       let node = new Node(val,img);
+      //let root;
       if(this.head === null) {
-        this.head = new Node(val,img);
+        this.head = node;
+        //this.head = new Node(val,img);
+       // root = this.head;
       } else {
         node = this.head;
         while (node.next) {
           node = node.next;
         }
         node.next = new Node(val,img);
+        //node.next.next = root;
       }
       return node.next;
+    }
+    reverse() {
+      let current = this.head;
+      if(!this.head) {return null;}
+      else if(this.head.next === null) {
+        return this.head;
+      } else {
+        while(current.next) {
+          let save = current.next;
+          current.next = this.previous;
+          this.previous = current;
+          current = save;
+        }
+        this.head = current;
+        this.head.next = this.previous;
+      }
     }
 }
 let tierUrl = "https://tier-board.github.io/tier-board-client/";
@@ -84,8 +106,8 @@ list.append(masterMindUrl, masterImage);
 list.append(bitUrl, bitImage);
 list.append(calcUrl, calcImage);
 
-let count = 0;
-let currentImage = 'MyFace.jpg';
+//let count = 0;
+let currentImage = tierImage;
 let url = 'https://tier-board.github.io/tier-board-client/';
 
 export default class Rotator extends Component {
@@ -94,56 +116,105 @@ export default class Rotator extends Component {
             super(props);
             this.state = {
                 view: true,
+                checked: true,
             }
         };
 
+        componentDidMount(){
+           currentImage = list.head.image;
+           return currentImage;
+           
+        }
+
         rotate = () => {
+
             // if(!list.next){
             //   list.head = list.previous.previous.previous;
             // } 
-            let move = () => {
-              StyledImage = styled.img`
-              transition: opacity 1s;
-              opacity: 0.1;             
-              `;
-              this.setState({view: false});
-            }
-           setTimeout(move,0); 
+            // let move = () => {
+            //   StyledImage = styled.img`
+            //   transition: opacity 1s;
+            //   opacity: .5;             
+            //   `;
+            //   this.setState({view: false});
+            // }
+            // setTimeout(move,0); 
 
-           let change = () => {
-            StyledImage = styled.img`
-            transition: opacity 1s;
-            opacity: 1;
-            `;
+          //  let change = () => {
+          //   StyledImage = styled.img`
+          //   transition: opacity 1s;
+          //   opacity: .5;
+          //   `;
            list.head = list.head.next;
-           //currentImage = list.head.image;
+           currentImage = list.head.image;
            console.log(currentImage, list.head.value, list.head.image);
            url = list.head.value;
-           count++;
-           console.log('count: ',count);
+           //count++;
+          //  console.log('count: ',count);
+          //  if(this.state.checked === false){
+          //   this.setState({checked: true});
+          //  // buttonText = 'return to game';
+          // }
+          // else{
+          //   this.setState({checked: false});
+          //   //buttonText = 'how to play'
+          // }
+           this.setState({view: false});
             
 
-              this.setState({view: true});
-           }
-           setTimeout(change,1000);
+
+          //  }
+          //  setTimeout(change,1000);
 
         }
+        reverse = () => {
+          let current = list.head;
+      if(!list.head) {return null;}
+      else if(list.head.next === null) {
+        return list.head;
+      } else {
+        while(current.next) {
+          let save = current.next;
+          current.next = list.previous;
+          list.previous = current;
+          current = save;
+        }
+        list.head = current;
+        list.head.next = list.previous;
+      }
+      currentImage = list.head.image;
+      console.log(currentImage, list.head.value, list.head.image);
+      url = list.head.value;
+
+
+
+          // list.reverse(list);
+          // console.log('previous',list.head.previous);
+          // list.head = list.head.previous;
+          // console.log('new head', list.head);
+
+          //  currentImage = list.head.image;
+          //  console.log(currentImage, list.head.value, list.head.image);
+          //  url = list.head.value;
+          // this.setState({view: false});
+        }
+
 
 
         render() {
         return (
             <div>
                 <h2>Projects</h2>
-                {/* <Carousel /*defaultWait={1000} wait for 1000 milliseconds >
-                  <Slide right> */}
+                {/* <Carousel defaultWait={1000}> */}
+                  <Slide direction='right'  mountOnEnter > 
                     <div className="rotator">
                       <a href={url}>
-                        <StyledImage src={require(`./assets/${list.head.image}`)} alt="link to site" width="200px"/>
+                        <StyledImage src={require(`./assets/${currentImage}`)} alt="link to site" width="200px"/>
                       </a>
                     </div>
-                  {/* </Slide>
-                </Carousel> */}
-                
+                   </Slide>
+                {/* </Carousel> */}
+                <button onClick={this.reverse}>Previous</button>
                 <button onClick={this.rotate}>Next</button>
             </div>
         );
