@@ -1,50 +1,70 @@
 .container {
     max-width: 100%;
-    background: gray;
+    background: rgb(236, 234, 234);
 }
-.row {
-    display: flex;
-    max-width: 75%;
-    height: 15em;
-    border: solid black 1px;
-    background: orange;
-    margin: 2em auto;
-}
-.column1 {
-    background: brown;
-    width: 45%;
-    max-width: 225px;
-    margin: 2.5% 2.5% 2.5% 2.5%;
-}
-.column2 {
-    background: green;
-    width: 45%;
-    max-width: 225px;
-    margin: 2.5% 2.5% 2.5% 2.5%;
-}
-.column3 {
-    background: blue;
-    width: 45%;
-    max-width: 225px;
-    margin: 2.5% 2.5% 2.5% 2.5%;
-}
-img {
-    margin: 0 .5em 0 .5em auto;
-    max-width: 90%;
+// .row {
+//     display: flex;
+//     max-width: 75%;
+//     height: 15em;
+//     border: solid black 1px;
+//     background: orange;
+//     margin: 2em auto;
+// }
+// .column1 {
+//     background: brown;
+//     width: 45%;
+//     max-width: 225px;
+//     margin: 2.5% 2.5% 2.5% 2.5%;
+// }
+// .column2 {
+//     background: green;
+//     width: 45%;
+//     max-width: 225px;
+//     margin: 2.5% 2.5% 2.5% 2.5%;
+// }
+// .column3 {
+//     background: blue;
+//     width: 45%;
+//     max-width: 225px;
+//     margin: 2.5% 2.5% 2.5% 2.5%;
+// }
+.projectCard-image {
+    border-radius: .5em .5em 0 0;
+    width: 100%;
+    height: 325px;
     // transform: translateX(0px);
     // -webkit-transition: opacity 2s; /* For Safari 3.1 to 6.0 */
     // transition: opacity 2s;
     // &:hover{
-    //   transform: translateX(-80px);
-    //   opacity: 0.1;
+    //   transform: scale(1.2);
     //   }
 }
 a {
     margin: 0;
     padding: 0;
 }
+.face-container {
+    margin: auto;
+    width: 300px;
+    height: 300px;
+}
+
+.projectSection-label {
+    margin-top: 0;
+    padding: 10px;
+
+}
+
 .projectCard-container {
     display: inline-block;
-    // flex-wrap: flex;
+    width: 350px;
     justify-content: space-evenly;
+    border-radius: .5em;
+    //background: gray;
+    margin: 1em;
+}
+.projectCard-para {
+    color: rgb(0, 0, 0);
+    height: 100px;
+    margin: 0;
 }

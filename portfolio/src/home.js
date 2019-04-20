@@ -7,14 +7,16 @@ export default class Home extends Component {
     render(){
         return(
             <Fragment>
-                 <nav>
-            <ul>
-              <li className="nav"><a href="/">home</a></li>
-              <li className="nav"><a href="/about">about</a></li>
-              <li className="nav"><a href="https://gist.github.com/Lennerblom/bd99389a3f6201a19e7caf741a26f0c8">resume</a></li>
-            </ul>
-          </nav>
+              <nav>
+                <ul>
+                  <li className="nav"><a href="/">home</a></li>
+                  <li className="nav"><a href="/about">about</a></li>
+                  <li className="nav"><a href="https://gist.github.com/Lennerblom/bd99389a3f6201a19e7caf741a26f0c8">resume</a></li>
+                </ul>
+              </nav>
+              <div className='face-container'>
                 <img src={require('./assets/MyFace.jpg') } alt="my face" width="300px"/>
+              </div>
                 <div className="container projects">
                 <ProjectCard/>
                   {/* <div class="row">
