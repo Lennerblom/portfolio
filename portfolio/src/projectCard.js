@@ -32,7 +32,7 @@ export default class ProjectCard extends Component {
             <div>
               <h2 className='projectSection-label'>Projects</h2>
               {this.state.projects.map(project => 
-                <a href={project.url}>
+                <a href={project.url} target={'_blank'}>
                   <div className='projectCard-container'>
                   <img className='projectCard-image' src={require(`./assets/${project.image}`)} alt='project link'></img>
                   <div className='projectCard-para'>{project.paragraph}</div></div>
