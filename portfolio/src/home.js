@@ -7,6 +7,7 @@ export default class Home extends Component {
     render(){
         return(
             <Fragment>
+              <header title='Michael Lennerblom Portfolio'/>
               <nav>
                 <ul>
                   <li className="nav"><a href="/">home</a></li>
