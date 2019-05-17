@@ -15,7 +15,7 @@ export default class CssPractice extends Component {
                 <div class="column2">
                   <h4>Bitfellows</h4>
                   <a href="https://bitfellows.github.io/client-side/">
-                    <img src={require('./assets/bitfellows.png')} alt="link to bitfellows site" width="150px"/> 
+                    <img src={require('./assets/bitfellows.jpg')} alt="link to bitfellows site" width="150px"/> 
                   </a>
                 </div>
               </div>
