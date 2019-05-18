@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Markdown from 'markdown-to-jsx';
-import resume from './resume.md'
+import resume from './resume.md';
 
 class ResumeInMD extends Component {
   constructor(props) {
@@ -22,9 +22,9 @@ class ResumeInMD extends Component {
     let { md } = this.state
 
     return (
-      <div className="resume">
-        <Markdown children={md}/>
-      </div>
+        <div className="resume">
+          <Markdown children={md}/>
+        </div>
     )
   }
 }

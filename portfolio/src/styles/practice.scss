@@ -1,6 +1,7 @@
 .container {
     max-width: 100%;
-    background: rgb(236, 234, 234);
+    background: linear-gradient(to right, #FFFFFF, #e2e1e1);
+    
 }
 // .row {
 //     display: flex;
@@ -45,10 +46,12 @@ a {
     padding: 0;
 }
 .intro-container {
+    background: linear-gradient(to left, #FFFFFF, #e2e1e1);
     display: inline-flex;
     justify-content: space-evenly;
     width: 100%;
     margin-top: 64px;
+    padding: 2em;
     height: 300px;
     align-items: center;
     font-weight: 500;
@@ -91,4 +94,8 @@ a {
     color: rgb(0, 0, 0);
     height: 100px;
     margin: 0;
+}
+
+.resume {
+    padding: 5em 2em;
 }
